@@ -1,0 +1,15 @@
+{% extends 'advertising/base.html' %}
+
+{% block content %}
+    <div>
+        <h2>Содержимое страницы</h2>
+        <ul>
+            {% for p in posts %}
+            <li>
+                <h2>{{p.title}}</h2>
+                <p>{{p.content}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
