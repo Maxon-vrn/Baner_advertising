@@ -1,22 +1,74 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!--mobile-->
     <title>{{title}}</title>
+
+    <!--путь указываем относительно папки static для подключения стилей css-->
+    <link type = 'text/css'rel="stylesheet" href="{% static 'advertising/css/style.css' %}"/>
+    <script src="{% static 'advertising/js/script.js' %}" defer></script>
+
+     <!--определите ключевые слова для поисковых систем  SEO-->
+    <meta name="keywords" content="Воронеж,Баннер,Реклама Воронеж, Аренда,Аренда баннера,Вреклама на щитах">
+    <meta http-equiv="Refresh" content="50" /> <!--auto refresh-->
+
+
+    {% block header %}
+    {% endblock header %}
+
 </head>
 <body>
 {% block mainmenu %}
-    <div>
-        <h1>menu</h1>
+<div class="navbar">
+  <a href="{% url 'home' %}" class="navbar-brand" style="padding-left: 40px;">АП Итера</a>
+  <div class="dropdown">
+    <button style="text-align: right;padding-right:120px;"class="dropbtn"> =
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">О нас</a>
+      <a href="#">Локации банеров</a>
+      <a href="#">Почуму мы</a>
+      <a href="#">Оставить заявку</a>
+      <a href="#">  Контакты</a>
     </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
+
 {% endblock %}
 
 {% block footer %}
-    <div>
-        <h2>footer</h2>
+    <div style="background-color:#333;color:white;">
+        <table style="width:100%;">
+            <tr >
+                <td><h3>Cоцсети:</h3>
+
+                    <li><img src="./static/advertising/images/whatsapp.png"
+                             alt="WhatsApp" width="40" height="40"></li>
+                    <li><img src="./static/advertising/images/telegram.png"
+                             alt="Telegram" width="40" height="40"></li></li>
+                </td>
+                <td><h3>Навигация сайта:</h3>
+                    <li>О нас</li>
+                    <li>Позиции</li>
+                    <li>Оставить завку</li>
+                </td>
+                <td><h3>Контакты:</h3>
+                    {% for p in organization %}
+                        <li>{{p.name_oranization}}</li>
+                        <li>{{p.phone_number}}</li>
+                        <li>{{p.email}}</li>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+    <p style="text-align:center;">@ confiditial information</p>
     </div>
 {% endblock %}
 
